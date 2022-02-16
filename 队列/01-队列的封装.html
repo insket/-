@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function Queue() {
+                // 属性
+                this.items = [];
+
+                //  方法
+                // 向队列尾部添加一个或多个新的项
+                Queue.prototype.enqueue = function (element) {
+                    this.items.push(element);
+                };
+
+                // 移除队列的第一个项，返回被移除的元素
+                Queue.prototype.dequeue = function () {
+                    return this.items.shift();
+                };
+
+                //  返回队列中第一个元素
+                Queue.prototype.front = function () {
+                    return this.items[0];
+                };
+
+                // 是否为空
+                Queue.prototype.isEmpty = function () {
+                    return this.items.length === 0;
+                };
+
+                Queue.prototype.size = function () {
+                    return this.items.length;
+                };
+
+                Queue.prototype.toString = function () {
+                    let resultString = '';
+                    for (let i = 0; i < this.items.length; i++) {
+                        resultString += this.items[i];
+                    }
+
+                    return resultString;
+                };
+            }
+
+            let q1 = new Queue();
+
+            q1.enqueue(10);
+            q1.enqueue(20);
+            q1.enqueue(30);
+            q1.enqueue(40);
+
+            q1.dequeue();
+
+            console.log(q1.front());
+            console.log(q1.isEmpty());
+            console.log(q1);
+        </script>
+    </body>
+</html>

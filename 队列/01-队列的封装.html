@@ -59,6 +59,34 @@
             console.log(q1.front());
             console.log(q1.isEmpty());
             console.log(q1);
+
+            // 击鼓传花
+            function passGame(nameList, num) {
+                // 创建一个队列
+                let q1 = new Queue();
+
+                // 将所有人加入到队列中
+                for (let i = 0; i < nameList.length; i++) {
+                    q1.enqueue(nameList[i]);
+                }
+
+                while (q1.size() > 1) {
+                    // 数数字 不是num的时候 重新加入到队列的末尾
+                    //  是 num  的时候,从队列中删除
+                    for (let i = 0; i < num - 1; i++) {
+                        q1.enqueue(q1.dequeue());
+                    }
+
+                    q1.dequeue();
+                }
+
+                // 获取剩下的项
+                let end = q1.front();
+                console.log(end);
+            }
+
+            let nameList = ['boob', 'lucy', 'chirstina', 'jiati', 'okali'];
+            passGame(nameList, 5);
         </script>
     </body>
 </html>
